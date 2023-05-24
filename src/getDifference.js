@@ -3,14 +3,6 @@ import fs from 'fs';
 import path from 'node:path';
 import parser from '../src/parser.js';
 
-//
-// fixtures
-//
- 
-//
-// getDiff body
-//
-
 const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 const getData = (filepath) => {
     const data = fs.readFileSync(filepath, 'utf-8');
@@ -44,7 +36,7 @@ const buildTree = (data1, data2) => {
             result.push(` + ${key}: ${data2[key]}`);
         }
     });
-    return result;
+    return `{\n${result.join('\n')}\n}`;
 };
 
 const getDifference = (file1, file2) => {
