@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'node:path';
