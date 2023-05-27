@@ -16,5 +16,5 @@ test('JSON file', () => {
   const filename2 = getFixturePath('file2.json');
   const resultFilename = getFixturePath('fileResult.txt');
   const result = fs.readFileSync(resultFilename, 'utf-8'); // https://nodejs.org/api/fs.html#fsreadfilesyncpath-options
-  expect(getDifference(filename1, filename2).toBe(result));
+  expect(getDifference(filename1, filename2)).toBe(result);
 });
