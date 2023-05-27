@@ -2,7 +2,6 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'node:path';
-import parser from './parser.js';
 
 const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 const getData = (filepath) => {
@@ -40,11 +39,4 @@ const buildTree = (data1, data2) => {
   return `{\n${result.join('\n')}\n}`;
 };
 
-const getDifference = (file1, file2) => {
-  const data1 = parser(getData(getAbsolutePath(file1)));
-  const data2 = parser(getData(getAbsolutePath(file2)));
-  const diff = buildTree(data1, data2);
-  return diff;
-};
-
-export default getDifference;
+export { buildTree, getAbsolutePath, getData };
