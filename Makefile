@@ -12,3 +12,6 @@ test:
 
 publish:
 	npm publish --dry-run
+
+test-coverage:
+	npx jest --coverage
