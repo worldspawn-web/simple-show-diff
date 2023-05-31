@@ -10,33 +10,33 @@ const getData = (filepath) => {
 };
 
 const buildTree = (data1, data2) => {
-  const keys = Object.keys(data1).concat(Object.keys(data2));
-  const uniqProperties = _.sortBy(_.uniq(keys));
-  const result = [];
-  uniqProperties.map((key) => {
-    // if the keys and values equal
-    if (_.has(data1, key) && _.has(data2, key)) {
-      if (data1[key] === data2[key]) {
-        result.push(`   ${key}: ${data1[key]}`);
+  // recursive
+  const comparison = (obj1, obj2) => {
+    const unitedKeys = _.union(Object.keys(obj1), Object.keys(obj2));
+    const sortedKeys = _.sortBy(_.uniq(unitedKeys));
+
+    return sortedKeys.map((key) => {
+      if (!_.has(obj2, key)) {
+        return { keyName: `${key}`, prevValue: obj1[key], conclusion: 'removed' };
       }
-    }
-    // if the keys equal, but values are diff
-    if (_.has(data1, key) && _.has(data2, key)) {
-      if (data1[key] !== data2[key]) {
-        result.push(` - ${key}: ${data1[key]}`);
-        result.push(` + ${key}: ${data2[key]}`);
+      if (!_.has(obj1, key)) {
+        return { keyName: `${key}`, newValue: obj2[key], conclusion: 'added' };
       }
-    }
-    // if the key is missing
-    if (_.has(data1, key) && !(_.has(data2, key))) {
-      result.push(` - ${key}: ${data1[key]}`);
-    }
-    // if new key appeared
-    if (!(_.has(data1, key)) && _.has(data2, key)) {
-      result.push(` + ${key}: ${data2[key]}`);
-    }
-  });
-  return `{\n${result.join('\n')}\n}`;
+      if (obj1[key] === obj2[key]) {
+        return { keyName: `${key}`, newValue: obj1[key], conclusion: 'no change' };
+      }
+      if (_.isPlainObject(obj1[key]) && _.isPlainObject(obj2[key])) {
+        return { keyName: `${key}`, newValue: comparison(obj1[key], obj2[key]), conclusion: 'nested' };
+      }
+      return {
+        keyName: `${key}`,
+        prevValue: obj1[key],
+        newValue: obj2[key],
+        conclusion: 'updated',
+      };
+    });
+  };
+  return comparison(data1, data2);
 };
 
 export { buildTree, getAbsolutePath, getData };
