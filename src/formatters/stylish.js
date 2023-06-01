@@ -1,8 +1,9 @@
 import _ from 'lodash';
 
 const spaces = 4;
+const whitespace = ' ';
 // leftside spaces
-const additionalSpaces = (depth) => ' '.repeat(depth * spaces - 2);
+const additionalSpaces = (depth) => whitespace.repeat(depth * spaces - 2);
 
 const getValueString = (value, depth) => {
   const recursion = (iterValue, iterDepth) => {
@@ -12,11 +13,11 @@ const getValueString = (value, depth) => {
     const iterData = Object.entries(iterValue);
     const output = iterData.map(([iterDataKey, iterDataValue]) => {
       if (!_.isObject(iterDataValue)) {
-        return `${' '.repeat(spaces * (iterDepth + 1))}${iterDataKey}: ${iterDataValue}`;
+        return `${whitespace.repeat(spaces * (iterDepth + 1))}${iterDataKey}: ${iterDataValue}`;
       }
-      return `${' '.repeat(spaces * (iterDepth + 1))}${iterDataKey}: ${recursion(iterDataValue, iterDepth + 1)}`;
+      return `${whitespace.repeat(spaces * (iterDepth + 1))}${iterDataKey}: ${recursion(iterDataValue, iterDepth + 1)}`;
     });
-    return `{\n${output.join('\n')}\n${' '.repeat(spaces * iterDepth)}}`;
+    return `{\n${output.join('\n')}\n${whitespace.repeat(spaces * iterDepth)}}`;
   };
   return recursion(value, depth);
 };
@@ -47,7 +48,7 @@ const makeStylish = (array) => {
       }
     });
 
-    return `{\n${outputLines.join('\n')}\n${' '.repeat(depth * spaces - 4)}}`;
+    return `{\n${outputLines.join('\n')}\n${whitespace.repeat(depth * spaces - 4)}}`;
   };
 
   return makeLine(array);
