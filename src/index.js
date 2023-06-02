@@ -1,7 +1,12 @@
-import { buildTree, getData, getAbsolutePath } from './buildTree.js';
-import { getExtension } from './parsers/utilities.js';
-import parseFile from './parsers/indexParser.js';
+import path from 'node:path';
+import fs from 'fs';
+import buildTree from './buildTree.js';
+import parseFile from './parser.js';
 import formatTree from './formatters/index.js';
+
+const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
+const getData = (filepath) => fs.readFileSync(filepath, 'utf-8');
+const getExtension = (filepath) => path.extname(filepath).slice(1);
 
 const getDifference = (file1, file2, format = 'stylish') => {
   // getting file data

@@ -1,13 +1,5 @@
 /* eslint-disable array-callback-return */
 import _ from 'lodash';
-import fs from 'fs';
-import path from 'node:path';
-
-const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
-const getData = (filepath) => {
-  const data = fs.readFileSync(filepath, 'utf-8');
-  return data;
-};
 
 const buildTree = (data1, data2) => {
   // recursive
@@ -39,4 +31,4 @@ const buildTree = (data1, data2) => {
   return comparison(data1, data2);
 };
 
-export { buildTree, getAbsolutePath, getData };
+export default buildTree;

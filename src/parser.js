@@ -1,15 +1,15 @@
-import { parseJSON, parseYaml } from './utilities.js';
+import yaml from 'js-yaml';
 
 const errorMsg = 'Wrong file format. Must be "yaml/yml" either "json".';
 
 const parseFile = (data, extension) => {
   switch (extension) {
     case 'json':
-      return parseJSON(data);
-
+      return JSON.parse(data);
     case 'yml':
+      return yaml.load(data);
     case 'yaml':
-      return parseYaml(data);
+      return yaml.load(data);
     default:
       throw new Error(errorMsg);
   }
