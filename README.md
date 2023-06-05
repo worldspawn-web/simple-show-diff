@@ -49,8 +49,10 @@ Options:
 <hr>
 
 ### JSON -> Stylish: (default)
-<script async id="asciicast-7xE3EQMqwXaCkfttonWEaTTRw" src="https://asciinema.org/a/7xE3EQMqwXaCkfttonWEaTTRw.js"></script>
+
+[![asciicast](https://asciinema.org/a/8BPvp91ENA4bwutDxKimJczyT.svg)](https://asciinema.org/a/8BPvp91ENA4bwutDxKimJczyT)
 <hr>
 
 ### YAML -> Plain:
-<script async id="asciicast-7xE3EQMqwXaCkfttonWEaTTRw" src="https://asciinema.org/a/7xE3EQMqwXaCkfttonWEaTTRw.js"></script>
+
+[![asciicast](https://asciinema.org/a/7xE3EQMqwXaCkfttonWEaTTRw.svg)](https://asciinema.org/a/7xE3EQMqwXaCkfttonWEaTTRw)
