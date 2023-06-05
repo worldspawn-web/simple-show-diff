@@ -14,6 +14,9 @@ const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 
 test.each([
   ['file1.yaml', 'file2.yaml', 'stylish', 'result-stylish.txt'],
+  ['file1.json', 'file2.json', 'stylish', 'result-stylish.txt'],
+  ['file1.json', 'file2.json', 'json', 'result-json.json'],
+  ['file1.yaml', 'file2.yaml', 'json', 'result-json.json'],
 ])('Comparing "%s" and "%s" with "%s" formatter equals to "%s"', (filename1, filename2, format, expected) => {
   const result = readFile(expected);
   const file1 = getFixturePath(filename1);
