@@ -28,7 +28,7 @@ const makePlain = (array, keypath = []) => {
       const leftLine = () => `Property '${accPath.join('.')}' was`;
 
       if (conclusion === 'updated') {
-        return `${leftLine()} updated. From ${complexValue(quotedPV)} to ${complexValue(quotedPV)}`;
+        return `${leftLine()} updated. From ${complexValue(quotedPV)} to ${complexValue(quotedNV)}`;
       }
       if (conclusion === 'added') {
         return `${leftLine()} added with value: ${complexValue(quotedNV)}`;
