@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import _ from 'lodash';
 
 // adds quotes if needed
@@ -16,19 +17,24 @@ const isChanged = (object) => !(object.conclusion === 'no change' && !_.isArray(
 
 const makePlain = (array, keypath = []) => {
   const lineElements = array.filter((object) => isChanged(object))
-    .map((object) => {
-      const prevValue = addQuotes(object.prevValue);
-      const newValue = addQuotes(object.newValue);
-      const accPath = _.concat(keypath, object.keyName);
+    .map(({
+      keyName,
+      conclusion,
+      newValue,
+      prevValue,
+    }) => {
+      prevValue = addQuotes(prevValue);
+      newValue = addQuotes(newValue);
+      const accPath = _.concat(keypath, keyName);
       const leftLine = () => `Property '${accPath.join('.')}' was`;
 
-      if (object.conclusion === 'updated') {
+      if (conclusion === 'updated') {
         return `${leftLine()} updated. From ${complexValue(prevValue)} to ${complexValue(newValue)}`;
       }
-      if (object.conclusion === 'added') {
+      if (conclusion === 'added') {
         return `${leftLine()} added with value: ${complexValue(newValue)}`;
       }
-      if (object.conclusion === 'nested') {
+      if (conclusion === 'nested') {
         return `${makePlain(newValue, accPath)}`;
       }
 
