@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import _ from 'lodash';
 
 // adds quotes if needed
@@ -23,19 +22,19 @@ const makePlain = (array, keypath = []) => {
       newValue,
       prevValue,
     }) => {
-      prevValue = addQuotes(prevValue);
-      newValue = addQuotes(newValue);
+      const quotedPV = addQuotes(prevValue);
+      const quotedNV = addQuotes(newValue);
       const accPath = _.concat(keypath, keyName);
       const leftLine = () => `Property '${accPath.join('.')}' was`;
 
       if (conclusion === 'updated') {
-        return `${leftLine()} updated. From ${complexValue(prevValue)} to ${complexValue(newValue)}`;
+        return `${leftLine()} updated. From ${complexValue(quotedPV)} to ${complexValue(quotedPV)}`;
       }
       if (conclusion === 'added') {
-        return `${leftLine()} added with value: ${complexValue(newValue)}`;
+        return `${leftLine()} added with value: ${complexValue(quotedNV)}`;
       }
       if (conclusion === 'nested') {
-        return `${makePlain(newValue, accPath)}`;
+        return `${makePlain(quotedNV, accPath)}`;
       }
 
       return `${leftLine()} removed`;
