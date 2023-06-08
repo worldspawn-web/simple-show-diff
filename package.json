@@ -2,10 +2,10 @@
   "name": "@hexlet/code",
   "version": "0.0.1",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/worldspawn-web/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/worldspawn-web/frontend-project-46/actions)",
+  "description": "Difference Calculator.",
   "main": "src/index.js",
   "scripts": {
-    "test": "npx jest"
+    "test": "npx jest ."
   },
   "author": "Worldspawn",
   "license": "ISC",
