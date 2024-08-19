@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import _ from 'lodash';
+import _ from "lodash";
 
 const buildTree = (data1, data2) => {
   // recursive
@@ -9,22 +9,22 @@ const buildTree = (data1, data2) => {
 
     return sortedKeys.map((key) => {
       if (!_.has(obj2, key)) {
-        return { keyName: `${key}`, prevValue: obj1[key], conclusion: 'removed' };
+        return { keyName: `${key}`, prevValue: obj1[key], conclusion: "removed" };
       }
       if (!_.has(obj1, key)) {
-        return { keyName: `${key}`, newValue: obj2[key], conclusion: 'added' };
+        return { keyName: `${key}`, newValue: obj2[key], conclusion: "added" };
       }
       if (obj1[key] === obj2[key]) {
-        return { keyName: `${key}`, newValue: obj1[key], conclusion: 'no change' };
+        return { keyName: `${key}`, newValue: obj1[key], conclusion: "no change" };
       }
       if (_.isPlainObject(obj1[key]) && _.isPlainObject(obj2[key])) {
-        return { keyName: `${key}`, newValue: comparison(obj1[key], obj2[key]), conclusion: 'nested' };
+        return { keyName: `${key}`, newValue: comparison(obj1[key], obj2[key]), conclusion: "nested" };
       }
       return {
         keyName: `${key}`,
         prevValue: obj1[key],
         newValue: obj2[key],
-        conclusion: 'updated',
+        conclusion: "updated",
       };
     });
   };
