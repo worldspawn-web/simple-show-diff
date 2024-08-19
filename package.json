@@ -16,7 +16,8 @@
     "@jest/globals": "^29.5.0",
     "commander": "^10.0.1",
     "js-yaml": "^4.1.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "tsx": "^4.17.0"
   },
   "devDependencies": {
     "eslint": "^8.41.0",
