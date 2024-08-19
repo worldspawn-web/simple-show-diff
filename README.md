@@ -1,9 +1,41 @@
 # Difference Calculator
 
-Looks for a difference between two data structures. A simillar technique is used for automatically tracking changes in configuration files.
-<br>
+Looks for a difference between two data structures. Usually being used for auto tracking of any changes in projects.
+
 **Supported file formats**: json, yaml, yml.
 **Supported output formats**: stylish (default), plain, json.
+
+### Supported File Formats
+
+<table>
+  <tr>
+    <td>
+      json
+    </td>
+    <td>
+      yaml
+    </td>
+    <td>
+      yml
+    </td>
+  </tr>
+</table>
+
+### Supported Output
+
+<table>
+  <tr>
+    <td>
+      stylish (default)
+    </td>
+    <td>
+      plain
+    </td>
+    <td>
+      json
+    </td>
+  </tr>
+</table>
 
 ## Requirements
 
