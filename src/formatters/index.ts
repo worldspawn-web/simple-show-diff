@@ -2,7 +2,7 @@ import makeStylish from "./stylish.ts";
 import makeJSON from "./json.ts";
 import makePlain from "./plain.ts";
 
-const formatTree = (tree, format) => {
+const formatTree = (tree: any[], format: string): string => {
   switch (format) {
     case "stylish":
       return makeStylish(tree);

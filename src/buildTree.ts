@@ -1,9 +1,16 @@
 /* eslint-disable array-callback-return */
 import _ from "lodash";
 
-const buildTree = (data1, data2) => {
+type Diff = {
+  keyName: string;
+  prevValue?: any;
+  newValue?: any;
+  conclusion: string;
+};
+
+const buildTree = (data1: object, data2: object): Diff[] => {
   // recursive
-  const comparison = (obj1, obj2) => {
+  const comparison = (obj1: object, obj2: object): Diff[] => {
     const unitedKeys = _.union(Object.keys(obj1), Object.keys(obj2));
     const sortedKeys = _.sortBy(_.uniq(unitedKeys));
 
@@ -21,13 +28,14 @@ const buildTree = (data1, data2) => {
         return { keyName: `${key}`, newValue: comparison(obj1[key], obj2[key]), conclusion: "nested" };
       }
       return {
-        keyName: `${key}`,
+        keyName: key,
         prevValue: obj1[key],
         newValue: obj2[key],
         conclusion: "updated",
       };
     });
   };
+
   return comparison(data1, data2);
 };
 
