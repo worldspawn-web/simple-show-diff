@@ -1,6 +1,6 @@
-import makeStylish from "./stylish.js";
-import makeJSON from "./json.js";
-import makePlain from "./plain.js";
+import makeStylish from "./stylish.ts";
+import makeJSON from "./json.ts";
+import makePlain from "./plain.ts";
 
 const formatTree = (tree, format) => {
   switch (format) {

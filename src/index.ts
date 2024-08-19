@@ -1,6 +1,6 @@
-import buildTree from "./buildTree.js";
-import parseFile from "./parser.js";
-import formatTree from "./formatters/index.js";
+import buildTree from "./buildTree.ts";
+import parseFile from "./parser.ts";
+import formatTree from "./formatters/index.ts";
 
 const getDifference = (file1, file2, format = "stylish") => {
   const object1 = parseFile(file1);
