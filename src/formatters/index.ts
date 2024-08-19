@@ -1,14 +1,14 @@
-import makeStylish from './stylish.js';
-import makeJSON from './json.js';
-import makePlain from './plain.js';
+import makeStylish from "./stylish.ts";
+import makeJSON from "./json.ts";
+import makePlain from "./plain.ts";
 
-const formatTree = (tree, format) => {
+const formatTree = (tree: any[], format: string): string => {
   switch (format) {
-    case 'stylish':
+    case "stylish":
       return makeStylish(tree);
-    case 'json':
+    case "json":
       return makeJSON(tree);
-    case 'plain':
+    case "plain":
       return makePlain(tree);
     default:
       throw new Error(`\n${format} is an unknown formatter! Available options: stylish (default), plain, json.\n`);
