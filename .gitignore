@@ -3,6 +3,3 @@
 
 # Tests
 /coverage/
-
-# Packages
-*-lock.json
